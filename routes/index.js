@@ -3,10 +3,11 @@ const router = require('express').Router();
 router.use('/', require('./swagger'));
 
 router.get('/', (req, res) => {
-    //#swagger.tags=['Hello World']
-    res.send('welcome to the gun show');
+    res.send('Welcome to the gun and suppressor API');
 });
 
-router.use('/users', require('./users')); 
+//separate routes for guns and suppressors
+router.use('/guns', require('./guns'));
+router.use('/suppressors', require('./suppressors'));
 
 module.exports = router;
