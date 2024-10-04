@@ -4,7 +4,7 @@ const ObjectId = require('mongodb').ObjectId;
 const getAllSuppressors = async (req, res) => {
     try {
         const result = await mongodb.getDatabase().db().collection('suppressors').find().toArray();
-        res.status(200).json(result);
+        res.status(204).json(result);
     } catch (err) {
         res.status(500).json({ message: 'Error retrieving suppressors', error: err });
     }
@@ -16,7 +16,7 @@ const getSingleSuppressor = async (req, res) => {
         const result = await mongodb.getDatabase().db().collection('suppressors').findOne({ _id: suppressorId });
 
         if (result) {
-            res.status(200).json(result);
+            res.status(204).json(result);
         } else {
             res.status(404).json({ message: 'Suppressor not found' });
         }
@@ -30,7 +30,7 @@ const createSuppressor = async (req, res) => {
         const response = await mongodb.getDatabase().db().collection('suppressors').insertOne(req.body);
 
         if (response.acknowledged) {
-            res.status(201).json({ message: 'Suppressor created successfully' });
+            res.status(204).json({ message: 'Suppressor created successfully' });
         } else {
             res.status(500).json({ message: 'Failed to create suppressor' });
         }
@@ -45,7 +45,7 @@ const updateSuppressor = async (req, res) => {
         const response = await mongodb.getDatabase().db().collection('suppressors').replaceOne({ _id: suppressorId }, req.body);
 
         if (response.modifiedCount > 0) {
-            res.status(200).json({ message: 'Suppressor updated successfully' });
+            res.status(204).json({ message: 'Suppressor updated successfully' });
         } else {
             res.status(404).json({ message: 'Suppressor not found or no changes made' });
         }
@@ -60,7 +60,7 @@ const deleteSuppressor = async (req, res) => {
         const response = await mongodb.getDatabase().db().collection('suppressors').deleteOne({ _id: suppressorId });
 
         if (response.deletedCount > 0) {
-            res.status(200).json({ message: 'Suppressor deleted successfully' });
+            res.status(204).json({ message: 'Suppressor deleted successfully' });
         } else {
             res.status(404).json({ message: 'Suppressor not found' });
         }
