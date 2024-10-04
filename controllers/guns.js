@@ -4,7 +4,7 @@ const ObjectId = require('mongodb').ObjectId;
 const getAllGuns = async (req, res) => {
     try {
         const result = await mongodb.getDatabase().db().collection('guns').find().toArray();
-        res.status(204).json(result);
+        res.status(200).json(result);
     } catch (err) {
         res.status(500).json({ message: 'Error retrieving guns', error: err });
     }
@@ -16,7 +16,7 @@ const getSingleGun = async (req, res) => {
         const result = await mongodb.getDatabase().db().collection('guns').findOne({ _id: gunId });
 
         if (result) {
-            res.status(204).json(result);
+            res.status(200).json(result);
         } else {
             res.status(404).json({ message: 'Gun not found' });
         }
@@ -30,7 +30,7 @@ const createGun = async (req, res) => {
         const response = await mongodb.getDatabase().db().collection('guns').insertOne(req.body);
 
         if (response.acknowledged) {
-            res.status(204).json({ message: 'Gun created successfully' });
+            res.status(201).json({ message: 'Gun created successfully' });
         } else {
             res.status(500).json({ message: 'Failed to create gun' });
         }
@@ -45,7 +45,7 @@ const updateGun = async (req, res) => {
         const response = await mongodb.getDatabase().db().collection('guns').replaceOne({ _id: gunId }, req.body);
 
         if (response.modifiedCount > 0) {
-            res.status(204).json({ message: 'Gun updated successfully' });
+            res.status(200).json({ message: 'Gun updated successfully' });
         } else {
             res.status(404).json({ message: 'Gun not found or no changes made' });
         }
@@ -60,7 +60,7 @@ const deleteGun = async (req, res) => {
         const response = await mongodb.getDatabase().db().collection('guns').deleteOne({ _id: gunId });
 
         if (response.deletedCount > 0) {
-            res.status(204).json({ message: 'Gun deleted successfully' });
+            res.status(200).json({ message: 'Gun deleted successfully' });
         } else {
             res.status(404).json({ message: 'Gun not found' });
         }
