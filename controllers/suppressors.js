@@ -4,7 +4,7 @@ const ObjectId = require('mongodb').ObjectId;
 const getAllSuppressors = async (req, res) => {
     try {
         const result = await mongodb.getDatabase().db().collection('suppressors').find().toArray();
-        res.status(204).json(result);
+        res.status(200).json(result);
     } catch (err) {
         res.status(500).json({ message: 'Error retrieving suppressors', error: err });
     }
