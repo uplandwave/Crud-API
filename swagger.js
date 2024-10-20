@@ -5,7 +5,7 @@ const doc = {
         title: 'Crud Api',
         description: 'Crud Api'
     },
-    host: 'localhost:3001',
+    host: 'crud-api-nseo.onrender.com',
     schemes: ['https', 'http']
   };
 
