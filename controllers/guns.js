@@ -34,13 +34,13 @@ const createGun = async (req, res) => {
       schema: {
         type: 'object',
         properties: {
-            "model": "SIG Sauer P322",
-            "caliber": ".22",
-            "magazineCapacity": 15,
-            "weight": "1.1 lbs",
-            "barrelLength": "3.2 in",
-            "sights": "Night Sights",
-            "action": "Striker-Fired"
+            model: { type: 'string' },
+            caliber: { type: 'string' },
+            magazineCapacity: { type: 'number' },
+            weight: { type: 'string' },
+            barrelLength: { type: 'string' },
+            sights: { type: 'string' },
+            action: { type: 'string' }
         }
       }
     }
@@ -67,13 +67,13 @@ const updateGun = async (req, res) => {
       schema: {
         type: 'object',
         properties: {
-            "model": "SIG Sauer P322",
-            "caliber": ".22",
-            "magazineCapacity": 15,
-            "weight": "1.1 lbs",
-            "barrelLength": "3.2 in",
-            "sights": "Night Sights",
-            "action": "Striker-Fired"
+            model: { type: 'string' },
+            caliber: { type: 'string' },
+            magazineCapacity: { type: 'number' },
+            weight: { type: 'string' },
+            barrelLength: { type: 'string' },
+            sights: { type: 'string' },
+            action: { type: 'string' }
         }
       }
     }
