@@ -26,6 +26,25 @@ const getSingleGun = async (req, res) => {
 };
 
 const createGun = async (req, res) => {
+      /*
+    #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Create a new gun',
+      required: true,
+      schema: {
+        type: 'object',
+        properties: {
+            "model": "SIG Sauer P322",
+            "caliber": ".22",
+            "magazineCapacity": 15,
+            "weight": "1.1 lbs",
+            "barrelLength": "3.2 in",
+            "sights": "Night Sights",
+            "action": "Striker-Fired"
+        }
+      }
+    }
+  */
     try {
         const response = await mongodb.getDatabase().db().collection('guns').insertOne(req.body);
 
@@ -40,6 +59,25 @@ const createGun = async (req, res) => {
 };
 
 const updateGun = async (req, res) => {
+          /*
+    #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Change gun',
+      required: true,
+      schema: {
+        type: 'object',
+        properties: {
+            "model": "SIG Sauer P322",
+            "caliber": ".22",
+            "magazineCapacity": 15,
+            "weight": "1.1 lbs",
+            "barrelLength": "3.2 in",
+            "sights": "Night Sights",
+            "action": "Striker-Fired"
+        }
+      }
+    }
+  */
     try {
         const gunId = new ObjectId(req.params.id);
         const response = await mongodb.getDatabase().db().collection('guns').replaceOne({ _id: gunId }, req.body);

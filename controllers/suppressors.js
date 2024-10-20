@@ -26,6 +26,22 @@ const getSingleSuppressor = async (req, res) => {
 };
 
 const createSuppressor = async (req, res) => {
+          /*
+    #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Create a new suppressor',
+      required: true,
+      schema: {
+        type: 'object',
+        properties: {
+            "name": "Banish 30",
+            "caliber": ".30 and smaller",
+            "weight_oz": 13.2,
+            "material": "Titanium and Aluminum"
+        }
+      }
+    }
+  */
     try {
         const response = await mongodb.getDatabase().db().collection('suppressors').insertOne(req.body);
 
@@ -40,6 +56,22 @@ const createSuppressor = async (req, res) => {
 };
 
 const updateSuppressor = async (req, res) => {
+  /*
+    #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Change suppressor',
+      required: true,
+      schema: {
+        type: 'object',
+        properties: {
+            "name": "Banish 30",
+            "caliber": ".30 and smaller",
+            "weight_oz": 13.2,
+            "material": "Titanium and Aluminum"
+        }
+      }
+    }
+  */
     try {
         const suppressorId = new ObjectId(req.params.id);
         const response = await mongodb.getDatabase().db().collection('suppressors').replaceOne({ _id: suppressorId }, req.body);

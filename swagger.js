@@ -6,7 +6,7 @@ const doc = {
         description: 'Crud Api'
     },
     host: 'crud-api-nseo.onrender.com',
-    schemes: ['https', 'http']
+    schemes: ['https']
   };
 
   const outputFile = './swagger.json';
